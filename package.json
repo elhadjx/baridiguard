@@ -1,0 +1,35 @@
+{
+    "name": "baridi-guard-bot",
+    "version": "1.0.0",
+    "description": "Algerian Risk Assessment Telegram Bot",
+    "main": "dist/index.js",
+    "scripts": {
+        "start": "node dist/index.js",
+        "dev": "nodemon src/index.ts",
+        "build": "tsc"
+    },
+    "keywords": [
+        "telegram",
+        "bot",
+        "risk",
+        "scam",
+        "algeria",
+        "baridimob"
+    ],
+    "author": "BaridiGuard",
+    "license": "ISC",
+    "dependencies": {
+        "@grammyjs/conversations": "^2.1.1",
+        "dotenv": "^16.3.1",
+        "grammy": "^1.19.2",
+        "mongoose": "^8.0.3",
+        "rate-limiter-flexible": "^4.0.0",
+        "winston": "^3.11.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.10.4",
+        "nodemon": "^3.0.2",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.3.3"
+    }
+}
