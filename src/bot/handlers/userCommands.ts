@@ -67,7 +67,6 @@ export async function profileCommand(ctx: MyContext) {
 • **الاسم:** ${user.firstName || 'غير محدد'}
 • **اسم المستخدم:** @${user.username || 'لا يوجد'}
 • **رقم الهاتف:** ${user.phoneNumber ? `${user.phoneNumber.slice(0, 6)}****` : 'غير محدد'}
-• **RIP تاعك:** ${user.userRipNumber ? `${user.userRipNumber.slice(0, 8)}...` : 'غير محدد'}
 
 **⚖️ درجة الثقة:**
 ${getTrustEmoji(user.trustScore)} **${(user.trustScore * 100).toFixed(0)}%**
@@ -206,10 +205,9 @@ export async function aboutCommand(ctx: MyContext) {
 إذا تعاملت مع بائع مليح، نصح بيه!
 
 **🔒 الخصوصية:**
-معلوماتك محفوظة ومشفرة. نستخدم برك:
+نستخدم برك:
 • رقم تيليجرام
 • رقم الهاتف (للتحقق)
-• رقم RIP تاعك
 
 **🎯 هدفنا:**
 حماية الجزائريين من النصب والاحتيال في التعاملات الإلكترونية.

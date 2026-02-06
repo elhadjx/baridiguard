@@ -35,9 +35,8 @@ export async function registrationConversation(conversation: MyConversation, ctx
         "\n\n" +
         "🔐 **التسجيل في بريدي قارد (BaridiGuard)**\n\n" +
         "⚠️ **ملاحظة:** البوت حالياً في فترة تجريبية.\n\n" +
-        "باش تستعمل البوت، لازم تشارك:\n\n" +
-        "1️⃣ رقم الهاتف تاعك\n" +
-        "2️⃣ رقم الـ RIP تاعك (حساب بريدي موب)\n\n" +
+                "باش تستعمل البوت، لازم تشارك:\n\n" +
+        "1️⃣ رقم الهاتف تاعك\n\n" +
         "هذا باش نتأكدو من مصداقية المجتمع ونحاربو النصب.\n\n" +
         "**👇 ابعث رقمك بالزر لي تحت:**",
         { reply_markup: phoneKeyboard }
@@ -55,32 +54,12 @@ export async function registrationConversation(conversation: MyConversation, ctx
         return;
     }
 
-    // Step 2: Request RIP Number
-    await ctx.reply(
-        "2️⃣ ضرك ابعثلي رقم الـ RIP تاعك (20 رقم).\n\n" +
-        "هذا هو حساب بريدي موب تاعك الشخصي.\n\n" +
-        "⚠️ **مهم جداً:**\n" +
-        "• دخل رقم الـ RIP تاعك الصحيح\n" +
-        "• إذا واحد يبلغ على الـ RIP تاعك (إيجابي ولا سلبي)، راح نبعثولك إشعار\n" +
-        "• هذا يعاونك باش تعرف ريبوتيشن تاعك في المجتمع 📊"
-    );
-
-    const ripMsg = await conversation.waitFor(":text");
-    const userRip = ripMsg.message?.text || "";
-
-    // Validate RIP
-    if (!/^\d{20}$/.test(userRip)) {
-        await ctx.reply("❌ غالط. الـ RIP لازم يكون 20 رقم. عاود التسجيل بـ /start");
-        return;
-    }
-
-    // Save to database
+    // Step 2: Confirmation
     await conversation.external(async () => {
         await User.findOneAndUpdate(
             { telegramId },
             {
                 phoneNumber,
-                userRipNumber: userRip,
                 isRegistered: true,
                 username: ctx.from?.username,
                 firstName: ctx.from?.first_name
@@ -91,8 +70,7 @@ export async function registrationConversation(conversation: MyConversation, ctx
 
     await ctx.reply(
         "✅ **التسجيل تم بنجاح! 🎉**\n\n" +
-        `رقمك: ${phoneNumber}\n` +
-        `حسابك: ${userRip}\n\n` +
+        `رقمك: ${phoneNumber}\n\n` +
         "الآن تقدر تستعمل البوت:\n" +
         "🔍 `/check <RIP>` - ابعث حساب باش تشوف إذا آمن\n" +
         "🚨 `/report` - باش تبلغ أو تنصح",
