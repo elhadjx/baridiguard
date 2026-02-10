@@ -1,4 +1,5 @@
-# 🛡 BaridiGuard Bot
+# BOT HAS BEEN TERMINATED.
+#🛡 BaridiGuard Bot
 
 **BaridiGuard** is a specialized Telegram bot designed for the Algerian community to combat scams and build trust in **BaridiMob (CCP/RIP)** transactions. It acts as a reputation layer for RIP numbers, allowing users to check, report, and vouch for accounts before sending money.
 
